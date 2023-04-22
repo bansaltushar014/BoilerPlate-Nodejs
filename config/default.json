@@ -1,0 +1,7 @@
+{
+  "logConfig": {
+    "logFolder": ".//logs//",
+    "logFile": "blockchain-%DATE%.log",
+    "logLevel": "info"
+  }
+}

@@ -2,6 +2,9 @@ const User = require('../model/user');
 
 const loginUser = async (req, res) => {
   try {
+    // eslint-disable-next-line no-console
+    console.log('test');
+
     const findResponse = await User.findOne({ email: req.body.email }).exec();
     if (!findResponse) {
       return res.send('Not Found Any!');

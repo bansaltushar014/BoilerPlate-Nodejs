@@ -8,44 +8,44 @@ const enrollmentController = require('../controllers/EnrollmentController.js')
  * @swagger
  * tags:
  *   - name: Enrollment APIs
- *     description: "API to enroll admin and register user into the system"
+ *     description: "API to register and login user into the system"
  * components:
  *   schemas:
- *     Admin:
+ *     Register:
  *       type: object
  *       required:
- *         - adminId
- *         - orgName
+ *         - name
+ *         - email
+ *         - password
  *       properties:
- *         adminId:
+ *         name:
  *           type: string
- *           description: The id of admin user
- *         orgName:
+ *           description: Name of the user.
+ *         email:
  *           type: string
- *           description: The org name of the admin to enroll
- *     User:
+ *           description: Email of the user
+ *         password:
+ *           type: string
+ *           description: Password of the user
+ *     Login:
  *       type: object
  *       required:
- *         - adminId
- *         - userId
- *         - orgName
+ *         - email
+ *         - password
  *       properties:
- *         adminId:
+ *         email:
  *           type: string
- *           description: The id of the admin.
- *         userId:
+ *           description: Email of the user
+ *         password:
  *           type: string
- *           description: The id of the user.
- *         orgName:
- *           type: string
- *           description: The name of the organization.
+ *           description: Password of the user
  */
 
 /**
  * @swagger
- * /enrollment/enrollAdmin:
+ * /enrollment/loginUser:
  *   post:
- *    summary: API to enroll admin user in blockchain system.
+ *    summary: API to login user.
  *    tags:
  *      - Enrollment APIs
  *    requestBody:
@@ -53,7 +53,7 @@ const enrollmentController = require('../controllers/EnrollmentController.js')
  *      content:
  *        application/json:
  *           schema:
- *             $ref: '#/components/schemas/Admin'
+ *             $ref: '#/components/schemas/Login'
  *    responses:
  *      200:
  *        description: Admin has been successfully enrolled
@@ -62,7 +62,7 @@ const enrollmentController = require('../controllers/EnrollmentController.js')
  *      500:
  *        description: Internal Server Error
  */
-router.post('/enrollAdmin', enrollmentController.enrollAdmin)
+router.post('/loginUser', enrollmentController.loginUser)
 
 /**
  * @swagger
@@ -70,13 +70,13 @@ router.post('/enrollAdmin', enrollmentController.enrollAdmin)
  *   post:
  *    tags:
  *      - Enrollment APIs
- *    summary: API to register and enroll user in blockchain system.
+ *    summary: API to register user.
  *    requestBody:
  *      required: true
  *      content:
  *        application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/Register'
  *    responses:
  *      200:
  *        description: User has been successfully register and enrolled.

@@ -1,8 +1,9 @@
-const express = require('express')
-const router = express.Router()
-const enrollmentController = require('../controllers/EnrollmentController.js')
+const express = require('express');
 
-//tags seen below in swagger are used to give heading to group of apis.
+const router = express.Router();
+const enrollmentController = require('../controllers/EnrollmentController');
+
+// tags seen below in swagger are used to give heading to group of apis.
 
 /**
  * @swagger
@@ -62,7 +63,7 @@ const enrollmentController = require('../controllers/EnrollmentController.js')
  *      500:
  *        description: Internal Server Error
  */
-router.post('/loginUser', enrollmentController.loginUser)
+router.post('/loginUser', enrollmentController.loginUser);
 
 /**
  * @swagger
@@ -85,6 +86,6 @@ router.post('/loginUser', enrollmentController.loginUser)
  *      500:
  *        description: Internal Server Error
  */
-router.post('/registerUser', enrollmentController.registerUser)
+router.post('/registerUser', enrollmentController.registerUser);
 
-module.exports = router
+module.exports = router;

@@ -1,7 +1,9 @@
 const express = require('express');
 
 const router = express.Router();
-const enrollmentController = require('../controllers/EnrollmentController');
+
+// eslint-disable-next-line no-console
+const enrollmentController = require('@controllers/EnrollmentController');
 
 // tags seen below in swagger are used to give heading to group of apis.
 

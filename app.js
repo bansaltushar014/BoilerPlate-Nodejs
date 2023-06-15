@@ -8,7 +8,7 @@ const PropertiesReader = require('properties-reader');
 const properties = PropertiesReader('config/app.properties');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const { connectMongo } = require('./config/dbConnection');
+const { connectMongo } = require('@config/dbConnection');
 
 const logger = require('./lib/logger');
 

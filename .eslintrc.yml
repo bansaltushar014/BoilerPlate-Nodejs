@@ -8,3 +8,15 @@ parserOptions:
 rules: {
   no-console: error
 }
+settings:
+  import/resolver:
+    alias:
+      map:
+        - ["@controllers", "./controllers"]
+        - ["@model", "./model"]
+        - ["@config", "./config"]
+        - ["@routes", "./routes"]
+      extensions:
+        - .js
+        - .jsx
+        - .json

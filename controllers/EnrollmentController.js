@@ -1,4 +1,4 @@
-const User = require('../model/user');
+const User = require('@model/user');
 
 const loginUser = async (req, res) => {
   try {
@@ -7,14 +7,14 @@ const loginUser = async (req, res) => {
 
     const findResponse = await User.findOne({ email: req.body.email }).exec();
     if (!findResponse) {
-      return res.send('Not Found Any!');
+      return res.status(400).json({ message: 'Not Found Any!' });
     }
     if (findResponse.password !== req.body.password) {
-      return res.send('Wrong Credentials!');
+      return res.status(400).json({ message: 'Wrong Credentials!' });
     }
-    return res.send('LoginUser');
+    return res.status(200).json({ message: 'Loggedin!' });
   } catch (error) {
-    return res.send(`Failed to enroll admin user "admin": ${error}`);
+    return res.status(500).json({ message: `Failed to enroll admin user "admin": ${error}` });
   }
 };
 
@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
   try {
     const findResponse = await User.findOne({ email: req.body.email }).exec();
     if (findResponse) {
-      return res.send('Already existing email');
+      return res.status(400).json({ message: 'Already existing email!' });
     }
 
     const userData = {
@@ -33,9 +33,9 @@ const registerUser = async (req, res) => {
 
     const userInstance = await User.create(userData);
     await userInstance.save();
-    return res.send('registerUser');
+    return res.status(200).json({ message: 'Registered!' });
   } catch (error) {
-    return res.send(`Failed to register user: ${error}`);
+    return res.status(500).json({ message: `Failed to register user: ${error}` });
   }
 };
 

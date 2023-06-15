@@ -4,16 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r module-alias/register app.js"
   },
   "author": "",
   "license": "ISC",
+  "_moduleAliases": {
+    "@root": ".",
+    "@controllers": "controllers",
+    "@routes": "routes",
+    "@config": "config",
+    "@model": "model"
+  },
   "dependencies": {
     "config": "^3.3.9",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "module-alias": "^2.2.3",
     "mongoose": "^7.2.4",
     "properties-reader": "^2.2.0",
     "swagger-jsdoc": "^6.2.8",
@@ -22,8 +31,12 @@
     "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
+    "chain": "^0.4.0",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.27.5",
+    "mocha": "^10.2.0",
+    "request": "^2.88.2"
   }
 }
